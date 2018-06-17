@@ -1,7 +1,7 @@
 Sparkduino
 =========
 
-Arduino based engin ignition system forked from Speeduino code.
+Arduino based engine ignition system forked from Speeduino code.
 
 
 
