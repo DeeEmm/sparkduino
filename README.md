@@ -26,7 +26,7 @@ A. Most of the changes relate to the ini file used by Tuner Studio. The injector
 
 There are also some additional features planned that currently fall outside of the current Speeduino road map.
 
-Q. What additional features are planned?
+Q. What additional features are planned? 
 A. The following additional features are currently being considered:
   - Shift light
   - Water / meth injection control
