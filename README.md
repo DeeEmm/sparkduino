@@ -13,7 +13,7 @@ Sparkduino is a user mappable, distributor-less, crank-fired ignition system tha
 Project Goals
 =============
 
-The main goal of the project is to maintain an up-to-date ignition-only version of the Speeduino code so that those of use who run ignition-only systems can use a simplified and more relevent version of Tuner Studio.
+The main goal of the project is to maintain an up-to-date ignition-only version of the Speeduino code so that those of us who run ignition-only systems can use a simplified and more relevent version of Tuner Studio.
 
 Additional features may also be integrated into the software
 
