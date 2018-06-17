@@ -1,13 +1,15 @@
 Sparkduino
 =========
 
-Arduino based engine ignition system forked from Speeduino EFI code.
+Arduino based engine ignition system forked from Speeduino EFI code. The current Sparkduino version is based on the May 2018 Speeduino Release
 
 
 What is Sparkduino?
 ===================
 
 Sparkduino is a user mappable, distributor-less, crank-fired ignition system that can be used on a variety of engine configurations. It will run on the original Speeduino hardware and its derivatives as well as on custom hardware based on the Arduino Mega 2560 processor.
+
+Sparkduino is programmed by using Tuner Studio.
 
 
 Project Goals
