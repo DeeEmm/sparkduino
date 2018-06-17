@@ -187,7 +187,7 @@
 #define FUEL_PUMP_ON() *pump_pin_port |= (pump_pin_mask)
 #define FUEL_PUMP_OFF() *pump_pin_port &= ~(pump_pin_mask)
 
-const char TSfirmwareVersion[] = "Speeduino 2016.09";
+const char TSfirmwareVersion[] = "Speeduino 201806-dev";
 
 const byte data_structure_version = 2; //This identifies the data structure when reading / writing.
 //const byte page_size = 64;
