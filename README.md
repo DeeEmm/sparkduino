@@ -22,9 +22,7 @@ FAQ
 ===
 
 - Q. Whats different from the Speeduino code?
-- A. Most of the changes relate to the ini file used by Tuner Studio. The injector related parameters and dialogues have been removed leaving only the ignition parameters. The software uses a different code signature to differentiate it from the Speeduino code it is based on. 
-
-There are also some additional features planned that currently fall outside of the current Speeduino road map.
+- A. Most of the changes relate to the ini file used by Tuner Studio. The injector related parameters and dialogues have been removed leaving only the ignition parameters. The software uses a different code signature to differentiate it from the Speeduino code it is based on. There are also some additional features planned that currently fall outside of the current Speeduino road map.
 
 - Q. What additional features are planned? 
 - A. The following additional features are currently being considered:
