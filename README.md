@@ -17,7 +17,7 @@ Project Goals
 
 The main goal of the project is to maintain an up-to-date ignition-only version of the Speeduino code so that those of us who run ignition-only systems can use a simplified and more relevent version of Tuner Studio.
 
-Additional features may also be integrated into the software
+Additional features may also be integrated into the software that are not currently relvent to Speeduino.
 
 
 FAQ
@@ -33,6 +33,7 @@ FAQ
 
 - Q. What hardware do I use?
 - A. You can use any of the current Speeduino boards or its derivatives (check out the user boards in the forum). If building a Speeduino board from a kit you can also elect to not populate the circuitry that relates to the injector drivers.
+
 
 Roadmap
 =======
