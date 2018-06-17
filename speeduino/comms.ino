@@ -132,7 +132,7 @@ void command()
       break;
 
     case 'Q': // send code version
-      Serial.print("speeduino 201806-dev");
+      Serial.print("Speeduino.Sparkduino.V1.0");
       break;
 
     case 'r': //New format for the optimised OutputChannels
@@ -162,7 +162,7 @@ void command()
       break;
 
     case 'S': // send code version
-      Serial.print("Speeduino 2018.6-dev");
+      Serial.print("Sparkduino V1.0");
       currentStatus.secl = 0; //This is required in TS3 due to its stricter timings
       break;
 
