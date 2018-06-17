@@ -107,7 +107,7 @@ void canCommand()
       {
         CANSerial.write( TSfirmwareVersion[revn]);
       }
-       //Serial3.print("speeduino 201609-dev");
+       //Serial3.print("sparkduino 180616");
        break;
 
     case 'Q': // send code version
@@ -115,7 +115,7 @@ void canCommand()
        {
          CANSerial.write( TSfirmwareVersion[revn]);
        }
-       //Serial3.print("speeduino 201609-dev");
+       //Serial3.print("sparkduino 180616");
        break;
 
     case 'Z': //dev use
