@@ -31,6 +31,8 @@ FAQ
   - Shift light
   - Water / meth injection control
 
+- Q. What hardware do I use?
+- A. You can use any of the current Speeduino boards or its derivatives (check out the user boards in the forum). If building a Speeduino board from a kit you can also elect to not populate the circuitry that relates to the injector drivers.
 
 Roadmap
 =======
