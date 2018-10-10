@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<dsh xmlns="http://www.EFIAnalytics.com/:dsh">
+<bibliography author="TunerStudio 3.0.28 - EFI Analytics - support@efianalytics.com" company="EFI Analytics, © 2007 - 2018, All Rights Reserved." writeDate="Thu Oct 04 14:32:49 ACST 2018"/>
+<versionInfo fileFormat="3.0" firmwareSignature="speeduino 201808"/>
+<gaugeCluster antiAliasing="false" backgroundDitherColor="-8355712" clusterBackgroundColor="-12566464" clusterBackgroundImageFileName="" clusterBackgroundImageStyle="Tile">
+<dashComp type="Gauge">
+<Value type="double">0.0</Value>
+<MustPaint type="boolean">true</MustPaint>
+<RunDemo type="boolean">false</RunDemo>
+<Title type="String">Engine Speed</Title>
+<Dirty type="boolean">false</Dirty>
+<Units type="String">RPM</Units>
+<MinVP type="ValueProvider">0.0</MinVP>
+<MaxVP type="ValueProvider">8000.0</MaxVP>
+<GroupId type="int">0</GroupId>
+<GoingDead type="boolean">false</GoingDead>
+<BackColor alpha="255" blue="230" green="230" red="230" type="Color">-1644826</BackColor>
+<BackgroundImageFileName type="String">null</BackgroundImageFileName>
+<BorderWidth type="int">0</BorderWidth>
+<CriticalColor alpha="255" blue="51" green="51" red="255" type="Color">-52429</CriticalColor>
+<DefaultMax type="double">8000.0</DefaultMax>
+<DefaultMin type="double">0.0</DefaultMin>
+<DisplayValue type="String">0</DisplayValue>
+<FaceAngle type="int">360</FaceAngle>
+<FontColor alpha="255" blue="0" green="0" red="0" type="Color">-16777216</FontColor>
+<FontSizeAdjustment type="int">0</FontSizeAdjustment>
+<GaugePainter type="GaugePainter">Basic Readout</GaugePainter>
+<HighCritical type="double">5000.0</HighCritical>
+<HighCriticalVP type="ValueProvider">5000.0</HighCriticalVP>
+<HighWarning type="double">3000.0</HighWarning>
+<HighWarningVP type="ValueProvider">3000.0</HighWarningVP>
+<HistoricalPeakValue type="double">0.0</HistoricalPeakValue>
+<HistoryDelay type="int">15000</HistoryDelay>
+<LabelDigits type="int">0</LabelDigits>
+<LowCritical type="double">300.0</LowCritical>
+<LowCriticalVP type="ValueProvider">300.0</LowCriticalVP>
+<LowWarning type="double">600.0</LowWarning>
+<LowWarningVP type="ValueProvider">600.0</LowWarningVP>
+<MajorTicks type="double">-1.0</MajorTicks>
+<NeedleColor alpha="255" blue="20" green="44" red="255" type="Color">-54252</NeedleColor>
+<NeedleImageFileName type="String">null</NeedleImageFileName>
+<NeedleSmoothing type="int">1</NeedleSmoothing>
+<RelativeBorderWidth2 type="double">NaN</RelativeBorderWidth2>
+<ShortestSize type="int">657</ShortestSize>
+<SmoothedValue type="double">0.0</SmoothedValue>
+<StartAngle type="int">0</StartAngle>
+<SweepAngle type="int">300</SweepAngle>
+<SweepBeginDegree type="int">300</SweepBeginDegree>
+<TrimColor alpha="255" blue="255" green="255" red="255" type="Color">-1</TrimColor>
+<ValueDigits type="int">0</ValueDigits>
+<WarnColor alpha="255" blue="0" green="255" red="255" type="Color">-256</WarnColor>
+<CounterClockwise type="boolean">false</CounterClockwise>
+<DisplayValueAt180 type="boolean">false</DisplayValueAt180>
+<PegLimits type="boolean">true</PegLimits>
+<ShapeLockedToAspect type="boolean">false</ShapeLockedToAspect>
+<ShowHistory type="boolean">false</ShowHistory>
+<Value type="double">0.0</Value>
+<OutputChannel type="String">rpm</OutputChannel>
+<Dirty type="boolean">false</Dirty>
+<LongClickAction type="String"/>
+<ShortClickAction type="String"/>
+<Id type="String"/>
+<InvalidState type="boolean">false</InvalidState>
+<ItalicFont type="boolean">false</ItalicFont>
+<RelativeWidth type="double">0.99644128113879</RelativeWidth>
+<RelativeX type="double">8.650519031141869E-4</RelativeX>
+<RelativeHeight type="double">0.9921996879875195</RelativeHeight>
+<MustPaint type="boolean">true</MustPaint>
+<RunDemo type="boolean">false</RunDemo>
+<RelativeY type="double">0.0</RelativeY>
+<AntialiasingOn type="boolean">false</AntialiasingOn>
+<EcuConfigurationName type="String"/>
+<Dirty type="boolean">false</Dirty>
+<FontFamily type="String"/>
+</dashComp>
+</gaugeCluster>
+</dsh>

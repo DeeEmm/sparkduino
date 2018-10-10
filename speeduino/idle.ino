@@ -4,6 +4,9 @@ Copyright (C) Josh Stewart
 A full copy of the license may be found in the projects root directory
 */
 #include "idle.h"
+#include "maths.h"
+#include "timers.h"
+#include "src/PID_v1/PID_v1.h"
 
 /*
 These functions cover the PWM and stepper idle control
@@ -156,6 +159,7 @@ void initialiseIdle()
       iacStepTable.axisX = configPage6.iacBins;
 
       iacCrankStepsTable.xSize = 4;
+      iacCrankStepsTable.valueSize = SIZE_BYTE;
       iacCrankStepsTable.values = configPage6.iacCrankSteps;
       iacCrankStepsTable.axisX = configPage6.iacCrankBins;
       iacStepTime = configPage6.iacStepTime * 1000;
@@ -173,6 +177,7 @@ void initialiseIdle()
       iacClosedLoopTable.axisX = configPage6.iacBins;
 
       iacCrankStepsTable.xSize = 4;
+      iacCrankStepsTable.valueSize = SIZE_BYTE;
       iacCrankStepsTable.values = configPage6.iacCrankSteps;
       iacCrankStepsTable.axisX = configPage6.iacCrankBins;
       iacStepTime = configPage6.iacStepTime * 1000;
@@ -410,7 +415,7 @@ static inline void disableIdle()
   else if ( (configPage6.iacAlgorithm == IAC_ALGORITHM_STEP_CL) || (configPage6.iacAlgorithm == IAC_ALGORITHM_STEP_OL) )
   {
     //Only disable the stepper motor if homing is completed
-    if( isStepperHomed() == true )
+    if( (checkForStepping() == false) && (isStepperHomed() == true) )
     {
       digitalWrite(pinStepperEnable, HIGH); //Disable the DRV8825
       idleStepper.targetIdleStep = idleStepper.curIdleStep; //Don't try to move anymore

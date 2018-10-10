@@ -10,6 +10,11 @@ can_command is called when a command is received over serial3 from the Can inter
 It parses the command and calls the relevant function
 sendcancommand is called when a comman d is to be sent via serial3 to the Can interface
 */
+#include "globals.h"
+#include "cancomms.h"
+#include "maths.h"
+#include "errors.h"
+#include "utils.h"
 
 void canCommand()
 {
@@ -107,7 +112,7 @@ void canCommand()
       {
         CANSerial.write( TSfirmwareVersion[revn]);
       }
-       //Serial3.print("sparkduino 180616");
+       //Serial3.print("speeduino 201609-dev");
        break;
 
     case 'Q': // send code version
@@ -115,7 +120,7 @@ void canCommand()
        {
          CANSerial.write( TSfirmwareVersion[revn]);
        }
-       //Serial3.print("sparkduino 180616");
+       //Serial3.print("speeduino 201609-dev");
        break;
 
     case 'Z': //dev use

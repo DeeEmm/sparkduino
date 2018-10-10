@@ -4,6 +4,9 @@ Copyright (C) Josh Stewart
 A full copy of the license may be found in the projects root directory
 */
 #include "sensors.h"
+#include "crankMaths.h"
+#include "globals.h"
+#include "maths.h"
 
 void initialiseADC()
 {
@@ -48,6 +51,51 @@ void initialiseADC()
   MAPcurRev = 0;
   MAPcount = 0;
   MAPrunningValue = 0;
+
+  //The following checks the aux inputs and initialises pins if required
+  auxIsEnabled = false;
+  for (byte AuxinChan = 0; AuxinChan <16 ; AuxinChan++)
+  {
+    currentStatus.current_caninchannel = AuxinChan;          
+    //currentStatus.canin[14] = ((configPage9.Auxinpinb[currentStatus.current_caninchannel]&127)+1);
+    //currentStatus.canin[13] = (configPage9.caninput_sel[currentStatus.current_caninchannel]&3);          
+    if ( (configPage9.caninput_sel[currentStatus.current_caninchannel] == 1) && (configPage9.enable_candata_in > 0) && (configPage9.enable_canbus == 1))  //if current input channel is enabled as canbus
+    {
+      auxIsEnabled = true;
+    }
+    else if ((configPage9.caninput_sel[currentStatus.current_caninchannel]&3) == 2)  //if current input channel is enabled as analog local pin
+    {
+      byte pinNumber = (configPage9.Auxinpina[currentStatus.current_caninchannel]&127);
+
+      if( pinIsUsed(pinNumber) )
+      {
+        //Do nothing here as the pin is already in use.
+        //Need some method of reporting this back to the user
+      }
+      else
+      {
+        //Channel is active and analog
+        pinMode( pinNumber, INPUT);
+        auxIsEnabled = true;
+      }
+    }
+    else if ((configPage9.caninput_sel[currentStatus.current_caninchannel]&3) == 3)  //if current input channel is enabled as digital local pin
+    {
+      byte pinNumber = (configPage9.Auxinpinb[currentStatus.current_caninchannel]&127);
+
+      if( pinIsUsed(pinNumber) )
+      {
+        //Do nothing here as the pin is already in use.
+        //Need some method of reporting this back to the user
+      }
+      else
+      {
+        //Channel is active and analog
+        pinMode( pinNumber, INPUT);
+        auxIsEnabled = true;
+      }
+    }
+  }
 }
 
 static inline void instanteneousMAPReading()
@@ -200,12 +248,29 @@ void readTPS()
     byte tempTPS = fastMap1023toX(analogRead(pinTPS), 255); //Get the current raw TPS ADC value and map it into a byte
   #endif
   currentStatus.tpsADC = ADC_FILTER(tempTPS, ADCFILTER_TPS, currentStatus.tpsADC);
-  //Check that the ADC values fall within the min and max ranges (Should always be the case, but noise can cause these to fluctuate outside the defined range).
   byte tempADC = currentStatus.tpsADC; //The tempADC value is used in order to allow TunerStudio to recover and redo the TPS calibration if this somehow gets corrupted
-  if (currentStatus.tpsADC < configPage2.tpsMin) { tempADC = configPage2.tpsMin; }
-  else if(currentStatus.tpsADC > configPage2.tpsMax) { tempADC = configPage2.tpsMax; }
-  currentStatus.TPS = map(tempADC, configPage2.tpsMin, configPage2.tpsMax, 0, 100); //Take the raw TPS ADC value and convert it into a TPS% based on the calibrated values
-  currentStatus.TPS_time = currentLoopTime;
+
+  if(configPage2.tpsMax > configPage2.tpsMin)
+  {
+    //Check that the ADC values fall within the min and max ranges (Should always be the case, but noise can cause these to fluctuate outside the defined range).
+    if (currentStatus.tpsADC < configPage2.tpsMin) { tempADC = configPage2.tpsMin; }
+    else if(currentStatus.tpsADC > configPage2.tpsMax) { tempADC = configPage2.tpsMax; }
+    currentStatus.TPS = map(tempADC, configPage2.tpsMin, configPage2.tpsMax, 0, 100); //Take the raw TPS ADC value and convert it into a TPS% based on the calibrated values
+  }
+  else
+  {
+    //This case occurs when the TPS +5v and gnd are wired backwards, but the user wishes to retain this configuration.
+    //In such a case, tpsMin will be greater then tpsMax and hence checks and mapping needs to be reversed
+
+    tempADC = 255 - currentStatus.tpsADC; //Reverse the ADC values
+
+    //All checks below are reversed from the standard case above
+    if (tempADC > configPage2.tpsMin) { tempADC = configPage2.tpsMin; }
+    else if(tempADC < configPage2.tpsMax) { tempADC = configPage2.tpsMax; }
+    currentStatus.TPS = map(tempADC, configPage2.tpsMax, configPage2.tpsMin, 0, 100);
+  }
+
+  currentStatus.TPS_time = micros();
 }
 
 void readCLT()
@@ -298,6 +363,44 @@ void readBat()
  * This value is incremented with every pulse and reset back to 0 once per second
  */
 void flexPulse()
- {
-   ++flexCounter;
- }
+{
+  ++flexCounter;
+}
+
+/*
+ * The interrupt function for pulses from a knock conditioner / controller
+ * 
+ */
+void knockPulse()
+{
+  //Check if this the start of a knock. 
+  if(knockCounter == 0)
+  {
+    //knockAngle = crankAngle + fastTimeToAngle( (micros() - lastCrankAngleCalc) ); 
+    knockStartTime = micros();
+    knockCounter = 1;
+  }
+  else { ++knockCounter; } //Knock has already started, so just increment the counter for this
+
+}
+
+uint16_t readAuxanalog(uint8_t analogPin)
+{
+  //read the Aux analog value for pin set by analogPin 
+  unsigned int tempReading;
+  #if defined(ANALOG_ISR)
+    tempReading = fastMap1023toX(AnChannel[analogPin-A0], 511); //Get the current raw Auxanalog value
+  #else
+    tempReading = analogRead(analogPin);
+    tempReading = fastMap1023toX(analogRead(analogPin), 511); //Get the current raw Auxanalog value
+  #endif
+  return tempReading;
+} 
+
+uint16_t readAuxdigital(uint8_t digitalPin)
+{
+  //read the Aux digital value for pin set by digitalPin 
+  unsigned int tempReading;
+  tempReading = digitalRead(digitalPin); 
+  return tempReading;
+} 
