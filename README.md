@@ -1,42 +1,49 @@
-Speeduino
+Sparkduino
 =========
 
-FAQ:
-=========
+Arduino based engine ignition system forked from Speeduino EFI code. The current Sparkduino version is based on the May 2018 Speeduino Release
 
-Q: Speeduino, didn't you used to be called something else?
 
-A: Initial aim was for a simple DIY ECU for go-karts and the original project title was kartduino. As it became apparent that we wanted to extend support to larger vehicles, the name became a bit misleading.
-The important ideas though remain the same and the priority is still SIMPLICITY! The code is written with simplicity above all else in mind and all areas are well commented. The project can be loaded directly into the Arduino IDE and compiled with only a single additional library needing to be added. Where code is complex or low level, a high level pseudo code example is given to explain what is being performed. 
+What is Sparkduino?
+===================
 
-========================================================================
+Sparkduino is a user mappable, distributor-less, crank-fired ignition system that can be used on a variety of engine configurations. It will run on the original Speeduino hardware and its derivatives as well as on custom hardware based on the Arduino Mega 2560 processor.
 
-Q: Arduino ECU,pffft, heard THAT before. Does this one actually work?
+Sparkduino is programmed by using Tuner Studio.
 
-A: Yep! 1, 2, 4, 6 and 8 cylinder engines have all run, fuel and ignition, off Speeduino. 
 
-========================================================================
+Project Goals
+=============
 
-Q: So what can it do?
+The main goal of the project is to maintain an up-to-date ignition-only version of the Speeduino code so that those of us who run ignition-only systems can use a simplified and more relevent version of Tuner Studio.
 
-A: Take a look at this page for details: http://speeduino.com/wiki/index.php/Overview
+Additional features may also be integrated into the software that are not currently relvent to Speeduino.
 
-========================================================================
 
-Q: Target platform?
+FAQ
+===
 
-A: Arduino Mega (Or other ATmega1280 / ATmega2560 powered SKU) will be required. Standard arduino models are not suitable for multi-cylinder engines due to their lack of 16-bit timers. The shield board has been designed around the Mega and it is not expected that there will be a non-Mega variant. 
+- Q. Whats different from the Speeduino code?
+- A. Most of the changes relate to the ini file used by Tuner Studio. The injector related parameters and dialogues have been removed leaving only the ignition parameters. The software uses a different code signature to differentiate it from the Speeduino code it is based on. There are also some additional features planned that currently fall outside of the current Speeduino road map.
 
-========================================================================
+- Q. What additional features are planned? 
+- A. The following additional features are currently being considered:
+  - Shift light
+  - Water / meth injection control
 
-Q: I'm trying to get started or need some general help. What should I do?
+- Q. What hardware do I use?
+- A. You can use any of the current Speeduino boards or its derivatives (check out the user boards in the forum). If building a Speeduino board from a kit you can also elect to not populate the circuitry that relates to the injector drivers.
 
-A: Support is all through the forum at: http://speeduino.com/forum
 
-========================================================================
+Roadmap
+=======
 
-Q: I must know more! How can I contact you?
+- Remove remaining injector related parameters from Tuner Studio
+- Impliment Shift light code along with Tuner Studio Dialogue
+- Impliment Water / Meth control along with Tuner Studio Dialogue
 
-A: Come and visit the forum : http://speeduino.com/forum
 
-If you still need some more info, feel free to drop me a line: noisymime (AT) gmail (dot) com
+License
+=======
+
+Sparkduino is released under the GNU GPL V2 license
