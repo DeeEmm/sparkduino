@@ -42,7 +42,7 @@ Roadmap
 =======
 
 ~~- [ ] Remove remaining injector related parameters from Tuner Studio~~
-- [ ] Create custom ini files for tuner studio
+- [x] Create custom ini files for tuner studio
 - [ ] Impliment Shift light code along with Tuner Studio Dialogue
 - [ ] Impliment Water / Meth control along with Tuner Studio Dialogue
 
