@@ -1,7 +1,8 @@
 Sparkduino
 =========
 
-Arduino based engine ignition system forked from Speeduino EFI code. The current Sparkduino version is based on the May 2018 Speeduino Release
+Arduino based engine ignition system forked from Speeduino EFI code. 
+The current Sparkduino code is based on the September 2018 Speeduino Release (Speeduino-201808)
 
 
 What is Sparkduino?
@@ -15,32 +16,35 @@ Sparkduino is programmed by using Tuner Studio.
 Project Goals
 =============
 
-The main goal of the project is to maintain an up-to-date ignition-only version of the Speeduino code so that those of us who run ignition-only systems can use a simplified and more relevent version of Tuner Studio.
+Maintain an up-to-date ignition-only version of the Speeduino code.
+Maintain tuner studio ini and dashboard files to provide customised 'ignition only' tuner studio experience
 
-Additional features may also be integrated into the software that are not currently relvent to Speeduino.
+Integrate additional relevent 'ignition only' features that are not currently relevent to Speeduino.
 
 
 FAQ
 ===
 
+- Q. What hardware do I use?
+- A. You can use any of the current Speeduino boards or its derivatives (check out the user boards in the forum). If building a Speeduino board from a kit you can also elect to not populate the circuitry that relates to the injector drivers. You can also build your own custom board if you desire.
+
 - Q. Whats different from the Speeduino code?
-- A. Most of the changes relate to the ini file used by Tuner Studio. The injector related parameters and dialogues have been removed leaving only the ignition parameters. The software uses a different code signature to differentiate it from the Speeduino code it is based on. There are also some additional features planned that currently fall outside of the current Speeduino road map.
+- A. Most of the changes relate to the ini file used by Tuner Studio. Currently the arduino code is the same as Speeduino.
 
 - Q. What additional features are planned? 
 - A. The following additional features are currently being considered:
   - Shift light
   - Water / meth injection control
 
-- Q. What hardware do I use?
-- A. You can use any of the current Speeduino boards or its derivatives (check out the user boards in the forum). If building a Speeduino board from a kit you can also elect to not populate the circuitry that relates to the injector drivers.
 
 
 Roadmap
 =======
 
-- Remove remaining injector related parameters from Tuner Studio
-- Impliment Shift light code along with Tuner Studio Dialogue
-- Impliment Water / Meth control along with Tuner Studio Dialogue
+~~- [ ] Remove remaining injector related parameters from Tuner Studio~~
+- [ ] Create custom ini files for tuner studio
+- [ ] Impliment Shift light code along with Tuner Studio Dialogue
+- [ ] Impliment Water / Meth control along with Tuner Studio Dialogue
 
 
 License
